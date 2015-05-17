@@ -18,6 +18,7 @@ public class ChronicleMapCache implements CacheInterface {
 	private ChronicleMap<Long, Entry> chronicleMap;
 	
 	public ChronicleMapCache(String fileName) throws IOException {
+		ChronicleMapBuilder<Long, Entry> builder=ChronicleMapBuilder.of(Long.class, Entry.class).constantValueSizeBySample(new Entry()).actualChunkSize(2500);
 		chronicleMap=builder.createPersistedTo(new File(fileName));
 	}
 	@Override
